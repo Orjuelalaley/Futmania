@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="ISO-8859-1">
+	<title>Bluelock</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="/style/Estilo.css">
+	<link rel="icon" type="image/x-icon" href="/style/img/JAJA.jpg">
+
+</head>
+
+
+<body>
+
+	<p>The music is running in the background.</p>
+      <p>(Song: Kalimba which is provided as a Sample Music in Windows)</p>							
+	<div id="General">
+		<div id="Titulo">
+			<img id="logo" src="/style/img/img_representative.jpg" alt="logo">
+			<span id="tagline">
+			Canchas de futbol 5, 7 y 11
+			</span>
+		</div>
+		<div id="Miga">
+			<h2>Miga</h2>
+		</div>
+		<div id="Subtitulo">
+			<h2>Subtitulo</h2>
+		</div>
+		<div id="Derecha">
+			<h2>Derecha</h2>
+		</div>
+		<div id="Izquierda">
+			<h2>Izquierda</h2>
+		</div>
+		<div id="Cuerpo">
+			<h2>Centro</h2>
+			<h3>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+				Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
+				when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+				It has survived not only five centuries, but also the leap into electronic typesetting,
+				remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
+				sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
+				PageMaker including versions of Lorem Ipsum.
+			</h3>
+		</div>
+		
+	</div>
+
+
+</body>
+<script>
+	var audio = new Audio('/sounds/miss_you.mp3');
+	audio.loop = true;
+	document.addEventListener('visibilitychange', function() {
+		if (document.hidden) {
+			audio.pause();
+		} else {
+			audio.play();
+		}
+	});
+</script>
+
+</html>
