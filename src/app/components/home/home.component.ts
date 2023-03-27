@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cancha } from './canchas.model';
+import { Cancha } from '../canchas/canchas.model';
 
 @Component({
   selector: 'app-home',
