@@ -1,1 +1,19 @@
-<p>navmenu works!</p>
+<header>
+  <div class="container__menu">
+      <div class="logo">
+      <img src="{{img}}" alt="imagen">
+      </div>
+      <div class="menu">
+          <nav>
+              <ul>
+                  <li><a routerLink="/" (click)="scrollToElement('inicio')" class="inicio">Inicio</a></li>
+                  <li><a (click)="scrollToElement('nosotros')" class="nosotros">Nosotros</a></li>
+                  <li><a (click)="scrollToElement('equipo')" class="equipo">Equipo</a></li>
+                  <li><a href="#contactenos" class="contactenos">Contactenos</a></li>
+                  <li><a (click)="navegar()" class="canchas">Canchas</a></li>
+              </ul>
+          </nav>
+      </div>
+  </div>
+</header>
+
