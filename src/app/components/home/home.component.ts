@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Cancha } from '../canchas/canchas.model';
+import { Equipo } from './equipo.model';
 
 @Component({
   selector: 'app-home',
@@ -20,44 +21,70 @@ export class HomeComponent {
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 1',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 2',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 3',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 4',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 5',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 6',
-      imagen: "./assets/images/logo.png"
+      imagen: this.logo
     },]
+    Integrantes:Equipo [] = [
+      {
+        nombre: 'Juan',
+        imagen: this.imagen_juan,
+        descripcion: 'Lider Desarrollo',
+        especialidad: 'Java · HTML · CSS · Angular · NodeJS · Stringboot · Spring'
+      },
+      {
+        nombre: 'Tomas',
+        imagen: this.imagen_tomas,
+        descripcion: 'Lider Desarrollo',
+        especialidad: 'Java · HTML · CSS'
+      },
+      {
+        nombre: 'Sebastian',
+        imagen: this.imagen_sebas,
+        descripcion: 'Lider Desarrollo',
+        especialidad: 'Java · HTML · CSS · Angular · NodeJS',
+      },
+      {
+        nombre: 'Carlos',
+        imagen: this.imagen_carlos,
+        descripcion: 'Lider Desarrollo',
+        especialidad: 'Stringboot · Java · HTML · CSS',
+      }]
     ScrollTop(){
       window.scrollTo(0,0);
     }
+
 }

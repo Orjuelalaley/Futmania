@@ -28,7 +28,6 @@
           <h2>{{cancha.price}}</h2>
           <p>{{cancha.info}}</p>
           <p>{{cancha.descripcion}}</p>
-
         </div>
       </div>
     </div>
@@ -41,41 +40,13 @@
         <h1>Colombianos de bien con un gran futuro por delante</h1>
       </div>
       <div class="container__integrantes">
-        <div class="container__integrante">
+        <div  *ngFor="let integrante of Integrantes" class="container__integrante">
           <div class="foto__equipo">
-            <img src="{{imagen_juan}}" alt="">
+            <img [src]="integrante.imagen" alt="imagen">
           </div>
-          <h2>Juan</h2>
-          <h3>Lider Desarrollo</h3>
-          <h4>Java · HTML · CSS</h4>
-          <p>Una persona con cualidades excelentes</p>
-        </div>
-        <div class="container__integrante">
-          <div class="foto__equipo">
-            <img src="{{imagen_tomas}}" alt="">
-          </div>
-          <h2>Tomas</h2>
-          <h3>Lider Desarrollo</h3>
-          <h4>Java · HTML · CSS</h4>
-          <p>Una persona con cualidades excelentes</p>
-        </div>
-        <div class="container__integrante">
-          <div class="foto__equipo">
-            <img src="{{imagen_sebas}}" alt="">
-          </div>
-          <h2>Sebastian</h2>
-          <h3>Lider Desarrollo</h3>
-          <h4>Java · HTML · CSS</h4>
-          <p>Una persona con cualidades excelentes</p>
-        </div>
-        <div class="container__integrante">
-          <div class="foto__equipo">
-            <img src="{{imagen_carlos}}" alt="">
-          </div>
-          <h2>Carlos</h2>
-          <h3>Lider Desarrollo</h3>
-          <h4>Java · HTML · CSS</h4>
-          <p>Una persona con cualidades excelentes</p>
+          <h2>{{integrante.nombre}}</h2>
+          <h3>{{integrante.descripcion}}</h3>
+          <h4>{{integrante.especialidad}}</h4>
         </div>
       </div>
     </div>
