@@ -14,5 +14,4 @@ export class CanchasComponent {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
-
 }
