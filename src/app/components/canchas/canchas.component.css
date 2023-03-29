@@ -36,6 +36,7 @@
   margin-top: 40px;
 }
 
+
 .container__cover .text input{
   padding: 18px 80px;
   border: none;
@@ -58,6 +59,8 @@
   animation: move-vector 4s linear infinite;
 }
 
+
+
 @keyframes move-vector {
   0%{
       transform: translateY(15px);
@@ -69,5 +72,6 @@
       transform: translateY(15px);
   }
 }
+
 
 /*Estilos generales CARDS*/
