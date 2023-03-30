@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
   templateUrl: './canchas.component.html',
   styleUrls: ['./canchas.component.css']
 })
+
 export class CanchasComponent {
   img = './assets/images/logo.png';
   Soccer_field = './assets/images/Soccer_field_icon.png';
