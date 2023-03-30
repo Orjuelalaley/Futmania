@@ -81,7 +81,7 @@ export class HomeComponent {
         nombre: 'Carlos',
         imagen: this.imagen_carlos,
         descripcion: 'Lider Desarrollo',
-        especialidad: 'Stringboot · Java · HTML · CSS',
+        especialidad: 'SpringBoot · Java · HTML · CSS',
       }]
     ScrollTop(){
       window.scrollTo(0,0);
