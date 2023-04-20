@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { Cancha } from '../canchas/canchas.model';
 
 @Component({
     selector: 'app-documentacion',
