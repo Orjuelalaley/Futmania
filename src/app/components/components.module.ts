@@ -6,12 +6,9 @@ import {MatButtonModule} from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistroComponent } from './registro/registro.component';
 
-
-
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    RegistroComponent,
     RegistroComponent
   ],
   imports: [

@@ -4,6 +4,7 @@ import { CanchasComponent } from './components/canchas/canchas.component';
 import { HomeComponent } from './components/home/home.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { RegistroComponent } from './components/registro/registro.component';
+import { DocumentacionComponent } from './components/documentacion/documentacion.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/registro', pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: 'canchas', component: CanchasComponent},
   { path: 'home', loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)},
   {path: 'not-found', component: PageNotFoundComponent},
+  {path: 'documentacion', component: DocumentacionComponent},
   {path: '**', redirectTo: '/not-found'}
 ];
 
