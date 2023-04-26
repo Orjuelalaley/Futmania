@@ -9,8 +9,7 @@ import { RegistroComponent } from './registro/registro.component';
 @NgModule({
   declarations: [
     PageNotFoundComponent,
-    RegistroComponent
-  ],
+    RegistroComponent  ],
   imports: [
     BrowserAnimationsModule,
     MatButtonModule,

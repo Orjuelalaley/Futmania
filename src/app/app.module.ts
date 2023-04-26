@@ -8,6 +8,9 @@ import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CanchasComponent } from './components/canchas/canchas.component';
 import { DocumentacionComponent } from './components/documentacion/documentacion.component';
+import { ModelComponent } from './model/model.component';
+import { AplicationComponent } from './components/aplication/aplication.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -15,13 +18,16 @@ import { DocumentacionComponent } from './components/documentacion/documentacion
     HomeComponent,
     CanchasComponent,
     NavmenuComponent,
-    DocumentacionComponent
+    DocumentacionComponent,
+    ModelComponent,
+    AplicationComponent
   ],
   imports: [
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
