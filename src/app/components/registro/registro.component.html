@@ -1,0 +1,50 @@
+<body>
+    <div class="contenedor" id="contenedor">
+        <div class="form-contenedor contenedorLog">
+            <form action="#">
+                <h1>Inicia Sesión</h1>
+                <div class="contenedorRedes">
+                    <a href="" class="redSocial"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="redSocial"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="" class="redSocial"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>o utiliza tu cuenta</span>
+                <input type="text" placeholder="Correo">
+                <input type="password" placeholder="Contraseña">
+                <a href="#">Olvidaste tu contraseña?</a>
+                <button (click)="navegar()">Inicia Sesión</button>
+            </form>
+        </div>
+        <div class="form-contenedor contenedorReg">
+            <form action="#">
+                <h1>Registrate</h1>
+                <div class="contenedorRedes">
+                    <a href="" class="redSocial"><i class="fab fa-facebook-f"></i></a>
+                    <a href="" class="redSocial"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="" class="redSocial"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>o utiliza tu correo para registrate</span>
+                <input type="text" placeholder="Nombre">
+                <input type="text" placeholder="Correo">
+                <input type="password" placeholder="Contraseña">
+                <button (click)="navegar()">Registrarse</button>
+            </form>
+        </div>
+        <div class="contenedorMsg">
+            <div class="overlay">
+                <div class="overlaycontenedor poscontenedor-derecha">
+                    <h1>Bienvenido a FutMania</h1>
+                    <p>Crea una nueva cuenta junto a nosotros</p>
+                    <button class="shadow" id="Registrate">Registrate</button>
+                </div>
+                <div class="overlaycontenedor poscontenedor-izquierda">
+                    <h1>Un gusto volver a verte!</h1>
+                    <p>Para acceder a FutMania inicia sesion</p>
+                    <button class="shadow" id="Iniciasesion">Inicia Sesion</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</body>
+

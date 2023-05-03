@@ -11,7 +11,7 @@ export class PageNotFoundComponent implements OnInit {
   constructor(private router:Router) { }
   ngOnInit(): void {
   }
-  navegar() {
-    this.router.navigate(['/home']);
+  navegar(web_page : String ):void {
+    this.router.navigate([web_page]);
   }
 }

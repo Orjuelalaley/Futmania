@@ -31,8 +31,8 @@ export class NavmenuComponent implements OnInit {
       this.renderer.removeClass(header, 'header__active');
     }
   }
-  navegar() {
-    this.router.navigate(['/canchas']);
+  navegar(web_page : String ):void {
+    this.router.navigate([web_page]);
   }
 
 }
