@@ -6,11 +6,12 @@ import { Router } from '@angular/router';
   templateUrl: './page-not-found.component.html',
   styleUrls: ['./page-not-found.component.css']
 })
+
 export class PageNotFoundComponent implements OnInit {
   constructor(private router:Router) { }
   ngOnInit(): void {
   }
-  navegar() {
-    this.router.navigate(['/home']);
+  navegar(web_page : String ):void {
+    this.router.navigate([web_page]);
   }
 }

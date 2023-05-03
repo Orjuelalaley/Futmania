@@ -7,16 +7,17 @@ import {MatButtonModule} from '@angular/material/button';
 import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CanchasComponent } from './components/canchas/canchas.component';
+import { DocumentacionComponent } from './components/documentacion/documentacion.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     CanchasComponent,
-    NavmenuComponent
+    NavmenuComponent,
+    DocumentacionComponent
   ],
   imports: [
-
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,
