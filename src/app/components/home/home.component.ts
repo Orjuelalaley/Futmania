@@ -3,6 +3,7 @@ import { Cancha } from '../canchas/canchas.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -67,7 +68,6 @@ export class HomeComponent {
       imagen: this.cancha3
     },]
 
-
     Integrantes:Equipo [] = [
       {
         nombre: 'Juan',
@@ -96,6 +96,7 @@ export class HomeComponent {
     ScrollTop(){
       window.scrollTo(0,0);
     }
+
 
     navegar(web_page : String ):void {
       this.router.navigate([web_page]);

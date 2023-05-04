@@ -10,6 +10,7 @@ import { Cancha } from '../canchas/canchas.model';
 
 export class CanchasComponent {
   img = './assets/images/logo.png';
+
   cancha1 = './assets/images/canchas/1.jpg';
   cancha2 = './assets/images/canchas/2.jpg';
   cancha3 = './assets/images/canchas/3.jpg';
@@ -72,4 +73,5 @@ export class CanchasComponent {
   navegar(web_page : String ):void {
     this.router.navigate([web_page]);
   }
+
 }

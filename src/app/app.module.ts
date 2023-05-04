@@ -9,6 +9,7 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CanchasComponent } from './components/canchas/canchas.component';
 import { DocumentacionComponent } from './components/documentacion/documentacion.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { DocumentacionComponent } from './components/documentacion/documentacion
     MatButtonModule,
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
