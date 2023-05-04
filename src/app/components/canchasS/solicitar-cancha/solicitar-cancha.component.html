@@ -1,0 +1,103 @@
+
+
+<body>
+  <div class="contenedorPrincipal" id="modal-cancha1">
+      <div class="contenedorImagenes">
+          <div class="slider">
+              <div class="slides">
+                  <input type="radio" name="radio-btn" id="radio1" checked>
+                  <input type="radio" name="radio-btn" id="radio2">
+                  <input type="radio" name="radio-btn" id="radio3">
+                  <input type="radio" name="radio-btn" id="radio4">
+                  <div class="slide first">
+                      <img src="{{cancha1}}" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="{{cancha2}}" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="{{cancha3}}" alt="">
+                  </div>
+                  <div class="slide">
+                      <img src="{{cancha4}}" alt="">
+                  </div>
+                  <div class="navigation-auto">
+                      <div class="auto-btn1"></div>
+                      <div class="auto-btn2"></div>
+                      <div class="auto-btn3"></div>
+                      <div class="auto-btn4"></div>
+                  </div>
+              </div>
+              <div class="navigation-manual">
+                  <label for="radio1" class="manual-btn"></label>
+                  <label for="radio2" class="manual-btn"></label>
+                  <label for="radio3" class="manual-btn"></label>
+                  <label for="radio4" class="manual-btn"></label>
+              </div>
+          </div>
+      </div>
+      <div class="contenedorInfoPedido">
+          <div class="tituloCancha">
+              <h2>LA CANCHITA</h2>
+          </div>
+          <div class="contenedor-Lados">
+              <div class="contenedor-Info-Izquierda">
+                  <div class="contenedorInformacion">
+                      <h3>DIRECCIÓN:</h3>
+                      <h3>TIPO DE CANCHA:</h3>
+                      <h3>GRADAS:</h3>
+                      <h3>DESCRIPCIÓN:</h3>
+                  </div>
+                  <div class="contenedorCalendario">
+                      <div class="contenedorCalendarioHoras-text">
+                          <h3>DÍA</h3>
+                      </div>
+                      <input type="date" name="" id="">
+                      <div class="contenedorCalendarioHoras-text">
+                          <h3>HORAS</h3>
+                      </div>
+                      <div class="contenedorCalendarioHoras-input">
+                          <div class="contenedorCalendarioHoras-input1">
+                              <input type="time" name="Desde" id="">
+                          </div>
+                          <h4>-</h4>
+                          <div class="contenedorCalendarioHoras-input2">
+                              <input type="time" name="Hasta" id="">
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="contenedor-comDerecha">
+                  <div class="contenedor-comDerecha-Arr">
+                      <h3>COMENTARIOS</h3>
+                      <main class="comentariosCanchas">
+                          <section class="contenedor-agg-Com">
+                              <div class="imgagenUser">
+                                  <img src="{{perfil}}" alt="">
+                              </div>
+                              <div class="input-com">
+                                  <input id="nuevoComentario" type="text" placeholder="Cuentanos que opinas">
+                                  <div class="btn-agg">
+                                      <button id="btnComentario">Comentar</button>
+                                  </div>
+                              </div>
+                          </section>
+                      </main>
+                      <ul id="comentarios" class="contenedor-Comentarios2">
+
+                      </ul>
+                  </div>
+                  <div class="contenedor-comDerecha-Ab">
+                      <div class="valoracionCancha">
+                          <h3>VALORACIÓN</h3>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="contenedorConfirmacion">
+              <button>Alquilar Cancha</button>
+          </div>
+      </div>
+  </div>
+  <script  src="script.js"></script>
+</body>

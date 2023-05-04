@@ -8,9 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CanchasComponent } from './components/canchas/canchas.component';
 import { DocumentacionComponent } from './components/documentacion/documentacion.component';
-import { ModelComponent } from './model/model.component';
-import { AplicationComponent } from './components/aplication/aplication.component';
-import { HttpClientModule } from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
@@ -18,9 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     CanchasComponent,
     NavmenuComponent,
-    DocumentacionComponent,
-    ModelComponent,
-    AplicationComponent
+    DocumentacionComponent
   ],
   imports: [
     MatButtonModule,

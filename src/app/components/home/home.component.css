@@ -24,6 +24,7 @@
 #Titulo{
   font-size: 45px;
   font-weight: 700;
+  text-align: center;
 }
 
 .container__cover .text h1{
@@ -203,209 +204,130 @@
   width: 100%;
   height: 100%;
   transition: all 300ms;
-/*COVER*/
-
-.container__cover{
-  width: 100%;
-  height: 800px;
-  background-image: url(/assets/images/FondoCanchaNoB.svg);
-  background-position: right;
-  background-repeat: no-repeat;
 }
 
-.cover{
+/* Contenedor principal */
+.contenedor-principal {
+  width: 100%;
   max-width: 1200px;
-  height: 100%;
-  margin: auto;
-  display: flex;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Título */
+.contenedor-title {
+  text-align: center;
+}
+
+.contenedor-title h1 {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+/* Tarjeta de la cancha */
+.card-cancha {
+  list-style-type: none;
+  box-sizing: border-box;
+  margin: 10px;
+  width: relative;
+  height: relative;
+  border: 1px solid #ccc;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+}
+
+/* Envoltorio de la tarjeta de la cancha */
+.cancha-card-wrapper {
+  position: relative;
+  text-align: center;
+  width: relative;
+  height: relative;
   align-items: center;
-  justify-content: space-between;
-}
-
-.container__cover .text{
-  max-width: 400px;
-}
-
-#Titulo{
-  font-size: 45px;
-  font-weight: 700;
-}
-
-.container__cover .text h1{
-  font-size: 36px;
-  font-weight: 600;
-  margin-top: 20px;
-}
-
-.container__cover .text p{
-  font-size: 18px;
-  margin-top: 40px;
-}
-
-.container__cover .text input{
-  padding: 18px 80px;
-  border: none;
-  font-size: 16px;
-  border-radius: 50px;
-  margin-top: 40px;
-  background: linear-gradient(to right, #8cf07a, #3AC622);
-  color: #fff;
-  cursor: pointer;
-  box-shadow: 1px 1px 30px -12px #3AC622;
-  transition: all 300ms;
-}
-
-.container__cover .text input:hover{
-  box-shadow: 1px 1px 30px -6px #3AC622;
-}
-
-.container__cover .svg img{
-  width: 600px;
-  animation: move-vector 4s linear infinite;
-}
-
-@keyframes move-vector {
-  0%{
-      transform: translateY(15px);
-  }
-  50%{
-      transform: translateY(0px);
-  }
-  100%{
-      transform: translateY(15px);
-  }
-}
-
-/*Estilos generales CARDS*/
-
-.container__card-primary{
-  padding-top: 100px;
-}
-
-.card__primary{
-  max-width: 1200px;
-  margin: auto;
-  text-align: center;
-  padding: 0px 20px;
-}
-
-.text__card-primary{
-  max-width: 800px;
-  margin: auto;
-}
-
-.text__card-primary p{
-  color: greenyellow;
-  letter-spacing: 4px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.text__card-primary h1{
-  font-size: 40px;
-  font-weight: 600;
-  color: #000000;
-}
-
-.container__box-cardPrimary{
-  display: flex;
-  flex-wrap: wrap;
   justify-content: center;
-  margin-top: 40px;
 }
 
-.box__card-primary{
-  max-width: 350px;
-  padding: 60px 40px;
-  border: 1px solid #e6e6e6;
-  border-radius: 20px;
-  margin: 14px;
-  transition: all 400ms;
-}
-
-.box__card-primary:hover{
-  border: 1px solid transparent;
-  box-shadow: 1px 1px 30px -6px #3AC622;
-}
-
-.box__card-primary h2{
-  font-size: 18px;
-  margin-top: 40px;
-  font-weight: 500;
-}
-
-.box__card-primary p{
-  margin-top: 20px;
-}
-
-
-/*Estilos Equipo*/
-
-.container__team{
-  padding-top: 100px;
-}
-
-.integrantes{
-  max-width: 1200px;
-  margin: auto;
-  text-align: center;
-}
-
-.texto__integrantes{
-  max-width: 600px;
-  margin: auto;
-}
-
-.texto__integrantes p{
-  color: greenyellow;
-  letter-spacing: 6px;
-  font-size: 20px;
-  font-weight: 600;
-}
-
-.texto__integrantes h1{
-  font-size: 40px;
-  font-weight: 600;
-  color: #000000;
-}
-
-.container__integrantes{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 50px;
-}
-
-.container__integrante h2{
-  font-weight: 400;
-  margin-top: 15px;
-}
-
-.container__integrante h4{
-  font-weight: 400;
-}
-
-.container__integrante p{
-  padding-top: 10px;
-}
-
-.container__integrante{
-  max-width: 260px;
-  padding: 0px;
-  margin: 10px;
-  border: none;
-  text-align: start;
-}
-
-.foto__equipo{
-  width: 100%;
-  height: 250px;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-.foto__equipo img{
+/* Enlace de la tarjeta de la cancha */
+.link-cancha-card {
+  position: absolute;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  transition: all 300ms;
+  z-index: 1;
+}
+
+
+/* Imagen de la tarjeta de la cancha */
+.card-cancha img {
+  width: max-content;
+  height: 300px;
+}
+
+/* Detalles de la tarjeta de la cancha */
+.canchas-card-details {
+  padding: 10px;
+  max-height: 40%;
+}
+
+.canchas-card-details h2 {
+  font-size: 18px;
+  margin-top: 1px;
+  margin-bottom: 5px;
+}
+
+.canchas-card-details p {
+  font-size: 12px;
+  margin-top: 15px;
+  margin-bottom: 1px;
+}
+
+/* Estilos para hover */
+.card-cancha:hover {
+  box-shadow: 0 0 20px rgba(31, 120, 13, 0.3);
+  transform: translateY(-5px);
+}
+
+.ventana-modal {
+  display: none;
+}
+
+/* Mostrar la ventana modal cuando se hace clic en un enlace */
+.mostrar-ventana-modal {
+  display: block;
+}
+
+.ventana-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.contenido-ventana-modal {
+  background-color: white;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  width: 900px;
+  height: 1400px;
+  overflow: auto;
+}
+
+iframe{
+  width: 100%;
+  height: 100%;
+}
+
+.contenedor-lista-canchas{
+  display: grid;
+  grid-template-columns: repeat(3, 0.5fr);
 }

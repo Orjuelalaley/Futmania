@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { Cancha } from '../canchas/canchas.model';
 import { Equipo } from './equipo.model';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-home',
@@ -11,52 +13,61 @@ export class HomeComponent {
   Soccer_field = './assets/images/Soccer_field_icon.png';
   logo = './assets/images/logo.png';
   imagen_juan = './assets/images/equipo/patrick.jpeg';
-  imagen_tomas = './as sets/images/equipo/Tomas2.jpeg';
+  imagen_tomas = './assets/images/equipo/Tomas3.jpeg';
   imagen_sebas = './assets/images/equipo/sebastian.jpeg';
   imagen_carlos = './assets/images/equipo/uwu.jpeg';
+
+  cancha1 = './assets/images/canchas/1.jpg';
+  cancha2 = './assets/images/canchas/2.jpg';
+  cancha3 = './assets/images/canchas/3.jpg';
+  cancha4 = './assets/images/canchas/4.jpg';
+
+
+  constructor(private router: Router) { }
   canchas: Cancha[] = [
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 1',
-      imagen: this.logo
+      imagen: this.cancha1
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 2',
-      imagen: this.logo
+      imagen: this.cancha2
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 3',
-      imagen: this.logo
+      imagen: this.cancha3
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 4',
-      imagen: this.logo
+      imagen: this.cancha4
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 5',
-      imagen: this.logo
+      imagen: this.cancha2
     },
     {
       price: 10000,
       info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 6',
-      imagen: this.logo
+      imagen: this.cancha3
     },]
+
     Integrantes:Equipo [] = [
       {
         nombre: 'Juan',
@@ -84,6 +95,11 @@ export class HomeComponent {
       }]
     ScrollTop(){
       window.scrollTo(0,0);
+    }
+
+
+    navegar(web_page : String ):void {
+      this.router.navigate([web_page]);
     }
 
 }
