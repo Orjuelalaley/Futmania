@@ -9,7 +9,6 @@ import { RegistrarCanchaComponent } from './components/canchaR/registrar-cancha/
 import {SolicitarCanchaComponent} from './components/canchasS/solicitar-cancha/solicitar-cancha.component';
 
 
-
 const routes: Routes = [
   { path: '', redirectTo: '/registro', pathMatch: 'full' },
   { path: 'registro', component: RegistroComponent},
