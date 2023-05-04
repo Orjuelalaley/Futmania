@@ -1,5 +1,14 @@
-<div class="d-flex justify-content-center">
-  <div class="alert alert-danger">ERROR 404 </div>
-  <div class="alert alert-danger">Pagina no encontrada </div>
-  <button mat-raised-button color="primary" (click)="navegar()" class="inicio">Ir a inicio</button>
-</div>
+<head>
+  <title>404 Page Not Found</title>
+</head>
+<body>
+	<div class="container">
+    <h1>404</h1>
+    <div class="imgBx"></div>
+    <div class="detail">
+      <h3>¿ESTAS PERDIDO?</h3>
+      <span>La pagina que estas buscando no esta habilitada</span>
+      <button (click)="navegar('/home')">IR A INICIO</button>
+    </div>
+	</div>
+</body>
