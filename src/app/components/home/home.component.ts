@@ -11,7 +11,7 @@ export class HomeComponent {
   Soccer_field = './assets/images/Soccer_field_icon.png';
   logo = './assets/images/logo.png';
   imagen_juan = './assets/images/equipo/patrick.jpeg';
-  imagen_tomas = './assets/images/equipo/Tomas2.jpeg';
+  imagen_tomas = './as sets/images/equipo/Tomas2.jpeg';
   imagen_sebas = './assets/images/equipo/sebastian.jpeg';
   imagen_carlos = './assets/images/equipo/uwu.jpeg';
   canchas: Cancha[] = [
