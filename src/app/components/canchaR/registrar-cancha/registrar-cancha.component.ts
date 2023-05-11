@@ -1,4 +1,5 @@
-import { Component,  ElementRef, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-registrar-cancha',
@@ -7,80 +8,75 @@ import { Component,  ElementRef, ViewChild } from '@angular/core';
 })
 export class RegistrarCanchaComponent {
 
+  //private btnAgregarImagen: HTMLAnchorElement;
+  private inputAgregarImagen: HTMLInputElement;
+  private previsualizacionImagenes: HTMLDivElement;
+  public files : any = []
+  public previsualization? : string;
+
+  constructor(private sanitizer: DomSanitizer) {
+    //this.btnAgregarImagen = document.getElementById('btnAgregarImagen') as HTMLButtonElement;
+    //this.btnAgregarImagen = document.getElementById('btnAgregarImagen') as HTMLAnchorElement;
+    this.inputAgregarImagen = document.getElementById('inputAgregarImagen') as HTMLInputElement;
+    this.previsualizacionImagenes = document.getElementById('previsualizacionImagenes') as HTMLDivElement;
 
 
-  @ViewChild('btnAgregarImagen') btnAgregarImagen!: ElementRef<HTMLButtonElement>;
-  @ViewChild('inputAgregarImagen') inputAgregarImagen!: ElementRef<HTMLInputElement>;
-  @ViewChild('previsualizacionImagenes') previsualizacionImagenes!: ElementRef<HTMLButtonElement>;
 
-  constructor() {
+
 
   }
+  private agregarImagenes(files: FileList) {
+    this.previsualizacionImagenes.innerHTML = '';
 
-  ngOnInit() {
-    const btnAgregarImagen = this.btnAgregarImagen.nativeElement as HTMLButtonElement;
-    btnAgregarImagen.addEventListener('click', () => {
-      this.inputAgregarImagen.nativeElement.click();
-    });
-    const inputAgregarImagen = this.inputAgregarImagen.nativeElement as HTMLInputElement;
-    inputAgregarImagen.addEventListener('change', () => {
-      console.log('cambio');
-      this.mostrarPrevisualizacion(inputAgregarImagen);
-    });
-    const previsualizacionImagenes = this.previsualizacionImagenes.nativeElement as HTMLButtonElement;
-    previsualizacionImagenes.addEventListener('click', () => {
-      this.inputAgregarImagen.nativeElement.click();
-    });
-  }
-
-
-
-
-
-  mostrarPrevisualizacion(input: HTMLInputElement) {
-    const btnAgregarImagen = this.btnAgregarImagen.nativeElement as HTMLButtonElement;
-    if (input.files!.length === 0) {
-      btnAgregarImagen.classList.remove('fotosCargadas');
-    } else {
-      btnAgregarImagen.classList.add('fotosCargadas');
-    }
-  }
-
-  onBtnAgregarImagenClick() {
-    this.inputAgregarImagen.nativeElement.click();
-  }
-
-  onInputAgregarImagenChange() {
-    const previsualizacionImagenes = this.previsualizacionImagenes.nativeElement;
-    previsualizacionImagenes.innerHTML = '';
-    const files = this.inputAgregarImagen.nativeElement.files;
-    for (let i = 0; i < files!.length; i++) {
-      const file = files![i];
+    for (let i = 0; i < files.length; i++) {
       const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (readerEvent: any) => {
-        const content = readerEvent.target.result;
-        const imgContainer = document.createElement('div');
-        imgContainer.classList.add('imagenContainer');
-
-        const img = document.createElement('img');
-        img.src = content;
-        imgContainer.appendChild(img);
-
-        const eliminarImagen = document.createElement('button');
-        eliminarImagen.classList.add('eliminarImagen');
-        eliminarImagen.innerHTML = 'x';
-        eliminarImagen.addEventListener('click', () => {
-          imgContainer.remove();
-          if (previsualizacionImagenes.querySelectorAll('.imagenContainer').length === 0) {
-            this.btnAgregarImagen.nativeElement.classList.remove('fotosCargadas');
-          }
-        });
-        imgContainer.appendChild(eliminarImagen);
-
-        previsualizacionImagenes.appendChild(imgContainer);
+      reader.onload = (event: any) => {
+        const img = new Image();
+        img.src = event.target.result;
+        this.previsualizacionImagenes.appendChild(img);
       };
+      reader.readAsDataURL(files[i]);
     }
-    this.mostrarPrevisualizacion(this.inputAgregarImagen.nativeElement);
   }
+
+  clicker():void{
+    console.log("clicker");
+    this.inputAgregarImagen.click();
+  }
+
+  captureFile(event : any):any{
+    console.log(event.target.files);
+    const file = event.target.files[0];
+    this.extraerBase64(file).then((imagen:any) =>{
+      console.log(imagen);
+      this.previsualization = imagen.base;
+
+      this.files.push(imagen.base);
+    })
+
+    this.files.push(file);
+  }
+
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
+      const reader = new FileReader();
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
+        });
+      };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      }
+    } catch (e) {
+      reject(e);
+    }
+
+  });
 }
+
