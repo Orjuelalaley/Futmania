@@ -41,6 +41,7 @@ export class RegistrarCanchaComponent {
 
   clicker():void{
     console.log("clicker");
+    this.inputAgregarImagen = document.getElementById('inputAgregarImagen') as HTMLInputElement;
     this.inputAgregarImagen.click();
   }
 
