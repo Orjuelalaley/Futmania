@@ -9,6 +9,7 @@ import { NavmenuComponent } from './components/navmenu/navmenu.component';
 import { CanchasComponent } from './components/canchas/canchas.component';
 import { DocumentacionComponent } from './components/documentacion/documentacion.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,9 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

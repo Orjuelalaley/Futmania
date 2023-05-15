@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cancha } from '../canchas/canchas.model';
+import { Cancha } from '../models/cancha.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
 
@@ -24,49 +24,39 @@ export class HomeComponent {
 
 
   constructor(private router: Router) { }
+
   canchas: Cancha[] = [
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 1',
       imagen: this.cancha1
     },
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 2',
       imagen: this.cancha2
     },
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 3',
       imagen: this.cancha3
     },
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 4',
       imagen: this.cancha4
     },
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 5',
       imagen: this.cancha2
     },
     {
-      price: 10000,
-      info: 'Cancha de fútbol 5',
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
       nombre: 'Cancha 6',
       imagen: this.cancha3
     },]
+
 
     Integrantes:Equipo [] = [
       {

@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistroComponent } from './registro/registro.component';
 import { RegistrarCanchaComponent } from './canchaR/registrar-cancha/registrar-cancha.component';
 import { SolicitarCanchaComponent } from './canchasS/solicitar-cancha/solicitar-cancha.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SolicitarCanchaComponent } from './canchasS/solicitar-cancha/solicitar-
   imports: [
     BrowserAnimationsModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    ReactiveFormsModule,
   ]
 })
 export class ComponentsModule { }
