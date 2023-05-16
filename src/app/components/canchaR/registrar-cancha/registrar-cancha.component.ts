@@ -91,7 +91,7 @@ export class RegistrarCanchaComponent {
     this.tiempoInicio = this.FormularioRegistroCancha.get('horaInicio')?.value;
     this.tiempoFin = this.FormularioRegistroCancha.get('horaFin')?.value;
     this.imagenes = this.FormularioRegistroCancha.get('imagenes')?.value;
-    /*
+
     console.log(this.nombre);
     console.log(this.FormularioRegistroCancha.get('nombre')?.value);
     console.log(this.direccion);
@@ -107,7 +107,7 @@ export class RegistrarCanchaComponent {
     console.log(this.tiempoFin);
     console.log(this.FormularioRegistroCancha.get('horaFin')?.value);
     console.log(this.imagenes);
-    */
+
   }
 }
 
