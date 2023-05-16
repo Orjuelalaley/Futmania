@@ -7,6 +7,7 @@ import { RegistroComponent } from './registro/registro.component';
 import { RegistrarCanchaComponent } from './canchaR/registrar-cancha/registrar-cancha.component';
 import { SolicitarCanchaComponent } from './canchasS/solicitar-cancha/solicitar-cancha.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListarComponent } from './canchas/listar/listar.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     RegistroComponent,
     RegistrarCanchaComponent,
     SolicitarCanchaComponent,
+    ListarComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Cancha } from '../models/cancha.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
-
+import { CanchasService } from '../../servicios/canchas.service';
 
 @Component({
   selector: 'app-home',
@@ -22,9 +22,15 @@ export class HomeComponent {
   cancha3 = './assets/images/canchas/3.jpg';
   cancha4 = './assets/images/canchas/4.jpg';
 
+  canchas: Cancha[] = [];
+  constructor(private service:CanchasService, private router: Router) { }
 
-  constructor(private router: Router) { }
-
+  ngOnInit(): void {
+    this.service.getCanchas().subscribe(data => {
+      this.canchas = data;
+  });
+  }
+/*
   canchas: Cancha[] = [
     {
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
@@ -56,7 +62,7 @@ export class HomeComponent {
       nombre: 'Cancha 6',
       imagen: this.cancha3
     },]
-
+*/
 
     Integrantes:Equipo [] = [
       {
@@ -88,8 +94,8 @@ export class HomeComponent {
     }
 
 
-    navegar(web_page : String ):void {
-      this.router.navigate([web_page]);
+    navegar(web_page : String, canchas: Cancha ):void {
+      this.router.navigate([web_page], { queryParams: { data: JSON.stringify(canchas) } });
     }
 
 }

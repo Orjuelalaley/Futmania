@@ -1,5 +1,7 @@
 import { Component , Input } from '@angular/core';
 import { FormGroup,  FormControl, Validators} from '@angular/forms';
+import { Cancha } from '../../models/cancha.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-solicitar-cancha',
@@ -8,11 +10,12 @@ import { FormGroup,  FormControl, Validators} from '@angular/forms';
 })
 export class SolicitarCanchaComponent {
 
-
-  @Input() direccion: any = 'asd';
-  @Input() tipoCancha: any = 'asd';
-  @Input() gradas: any = 'asd';
-  @Input() descripcion: any = 'asd';
+  cancha!: Cancha;
+  @Input() nombre: any = '';
+  @Input() direccion: any = '';
+  @Input() tipoCancha: any = '';
+  @Input() gradas: any = '';
+  @Input() descripcion: any = '';
   @Input() imagenes: any[] = [];
 
   @Input() dia: any = '';
@@ -26,12 +29,22 @@ export class SolicitarCanchaComponent {
   cancha4 = './assets/images/canchas/4.jpg';
   perfil = './assets/images/canchas/prfl.png';
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {}
   solicitudCancha = new FormGroup({
     dia: new FormControl('', Validators.required),
     horaInicio: new FormControl('', Validators.required),
     horaFin: new FormControl('', Validators.required),
   });
+
+  ngOnInit(){
+    this.route.queryParams.subscribe(params => {
+      this.cancha = JSON.parse(params['data']);
+    });
+    this.nombre = this.cancha.nombre;
+    this.direccion = this.cancha.ubicacion;
+    this.descripcion = this.cancha.descripcion;
+    console.log(this.cancha.ubicacion);
+  }
 
   comentariosFrom = new FormGroup({
     comentario: new FormControl('', Validators.required),
@@ -50,6 +63,7 @@ export class SolicitarCanchaComponent {
     console.log(this.horaInicio);
     console.log(this.horaFin);
     console.log(this.comentario[0]);
+    console.log(this.cancha.nombre);
   }
 
   borrarContenido(input: any) {

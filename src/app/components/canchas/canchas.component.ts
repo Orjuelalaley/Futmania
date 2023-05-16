@@ -1,5 +1,6 @@
 import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
+import { CanchasService } from '../../servicios/canchas.service';
 import { Cancha } from '../models/cancha.model';
 
 @Component({
@@ -17,11 +18,9 @@ export class CanchasComponent {
   cancha4 = './assets/images/canchas/4.jpg';
   Soccer_field = './assets/images/Soccer_field_icon.png';
 
-  @Input() descripcion: String = '';
-  @Input() nombre: String = '';
-  @Input() imagen: String = '';
+  canchas: Cancha[] = [];
 
-
+  /*
   canchas: Cancha[] = [
     {
       descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
@@ -53,14 +52,20 @@ export class CanchasComponent {
       nombre: 'Cancha 6',
       imagen: this.cancha3
     },]
-
-  constructor(private router:Router) { }
+*/
+  constructor(private service:CanchasService, private router:Router) { }
 
   scrollToElement(elementId: string): void {
     const element = document.getElementById(elementId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
+  }
+
+  ngOnInit(): void {
+    this.service.getCanchas().subscribe(data => {
+        this.canchas = data;
+    });
   }
 
   navegar(web_page : String ):void {

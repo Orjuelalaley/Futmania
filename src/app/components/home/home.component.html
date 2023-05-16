@@ -16,10 +16,10 @@
     <ul class="contenedor-lista-canchas">
         <li *ngFor="let cancha of canchas" role="listitem" class="card-cancha">
             <div class="cancha-card-wrapper">
-                <a (click)="navegar('/solicitudCancha')" class="link-cancha-card"></a>
+                <a (click)="navegar('/solicitudCancha', cancha)" class="link-cancha-card"></a>
                 <img src="{{cancha.imagen}}" alt="">
                 <div class="canchas-card-details">
-                    <h2>LA CANCHITA</h2>
+                    <h2>{{cancha.nombre}}</h2>
                     <p>{{cancha.descripcion}}</p>
                 </div>
             </div>
