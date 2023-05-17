@@ -38,54 +38,63 @@
       </div>
       <div class="contenedorInfoPedido">
           <div class="tituloCancha">
-              <h2>LA CANCHITA</h2>
+              <h2>{{nombre}}</h2>
           </div>
           <div class="contenedor-Lados">
               <div class="contenedor-Info-Izquierda">
                   <div class="contenedorInformacion">
-                      <h3>DIRECCIÓN:</h3>
-                      <h3>TIPO DE CANCHA:</h3>
-                      <h3>GRADAS:</h3>
-                      <h3>DESCRIPCIÓN:</h3>
+                      <h3>DIRECCIÓN: {{direccion}}</h3>
+                      <h3>TIPO DE CANCHA: {{tipoCancha}}</h3>
+                      <h3>GRADAS: {{gradas}}</h3>
+                      <h3>DESCRIPCIÓN: {{descripcion}}</h3>
                   </div>
-                  <div class="contenedorCalendario">
+                  <form [formGroup]="solicitudCancha">
+                    <div class="contenedorCalendario">
                       <div class="contenedorCalendarioHoras-text">
                           <h3>DÍA</h3>
                       </div>
-                      <input type="date" name="" id="">
+                      <input type="date" name="" id="" formControlName="dia">
                       <div class="contenedorCalendarioHoras-text">
                           <h3>HORAS</h3>
                       </div>
                       <div class="contenedorCalendarioHoras-input">
                           <div class="contenedorCalendarioHoras-input1">
-                              <input type="time" name="Desde" id="">
+                              <input type="time" name="Desde" id="" formControlName="horaInicio">
                           </div>
                           <h4>-</h4>
                           <div class="contenedorCalendarioHoras-input2">
-                              <input type="time" name="Hasta" id="">
+                              <input type="time" name="Hasta" id="" formControlName="horaFin">
                           </div>
                       </div>
-                  </div>
+                    </div>
+                  </form>
+
               </div>
               <div class="contenedor-comDerecha">
                   <div class="contenedor-comDerecha-Arr">
                       <h3>COMENTARIOS</h3>
-                      <main class="comentariosCanchas">
-                          <section class="contenedor-agg-Com">
-                              <div class="imgagenUser">
-                                  <img src="{{perfil}}" alt="">
-                              </div>
-                              <div class="input-com">
-                                  <input id="nuevoComentario" type="text" placeholder="Cuentanos que opinas">
-                                  <div class="btn-agg">
-                                      <button id="btnComentario">Comentar</button>
-                                  </div>
-                              </div>
-                          </section>
-                      </main>
-                      <ul id="comentarios" class="contenedor-Comentarios2">
+                      <form [formGroup]="comentariosFrom">
+                          <main class="comentariosCanchas">
+                            <section class="contenedor-agg-Com">
+                                <div class="imgagenUser">
+                                    <img src="{{perfil}}" alt="">
+                                </div>
+                                <div class="input-com">
+                                    <input id="nuevoComentario" type="text" placeholder="Cuentanos que opinas" (click)="borrarContenido($event.target)" formControlName="comentario">
+                                    <div class="btn-agg">
+                                        <button (click)="comment()" id="btnComentario">Comentar</button>
+                                    </div>
+                                </div>
+                            </section>
+                          </main>
+                          <ul id="comentarios" class="contenedor-Comentarios2">
+                            <div *ngFor="let comentarios of comentario">
+                              <p>{{comentarios}}</p>
+                            </div>
 
-                      </ul>
+                          </ul>
+                      </form>
+
                   </div>
                   <div class="contenedor-comDerecha-Ab">
                       <div class="valoracionCancha">
@@ -95,9 +104,8 @@
               </div>
           </div>
           <div class="contenedorConfirmacion">
-              <button>Alquilar Cancha</button>
+              <button (click)="Submit()">Alquilar Cancha</button>
           </div>
       </div>
   </div>
-  <script  src="script.js"></script>
 </body>

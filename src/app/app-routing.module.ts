@@ -7,6 +7,7 @@ import { RegistroComponent } from './components/registro/registro.component';
 import { DocumentacionComponent } from './components/documentacion/documentacion.component';
 import { RegistrarCanchaComponent } from './components/canchaR/registrar-cancha/registrar-cancha.component';
 import {SolicitarCanchaComponent} from './components/canchasS/solicitar-cancha/solicitar-cancha.component';
+import { ListarComponent } from './components/canchas/listar/listar.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'registro', component: RegistroComponent},
   { path: 'home', component: HomeComponent},
   { path: 'canchas', component: CanchasComponent},
+  { path: 'listar', component: ListarComponent},
   { path: 'home', loadChildren: () => import('./components/components.module').then(m => m.ComponentsModule)},
   { path: 'not-found', component: PageNotFoundComponent},
   { path: 'documentacion', component: DocumentacionComponent},

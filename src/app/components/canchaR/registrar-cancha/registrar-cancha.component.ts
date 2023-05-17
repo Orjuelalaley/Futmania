@@ -1,4 +1,6 @@
-import { Component,  ElementRef, ViewChild } from '@angular/core';
+import { Component , Input} from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+import { FormGroup , FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-registrar-cancha',
@@ -7,80 +9,105 @@ import { Component,  ElementRef, ViewChild } from '@angular/core';
 })
 export class RegistrarCanchaComponent {
 
+  @Input() nombre: any = '';
+  @Input() direccion: any = '';
+  @Input() descripcion: any = '';
+  @Input() tipoCancha: any = '';
+  @Input() gradas: any = '';
+  @Input() tiempoInicio: any = '';
+  @Input() tiempoFin: any = '';
+  @Input() imagenes: any = '';
 
+  //private btnAgregarImagen: HTMLAnchorElement;
+  private inputAgregarImagen: HTMLInputElement;
+  public files : any = []
+  public previsualization? : string;
 
-  @ViewChild('btnAgregarImagen') btnAgregarImagen!: ElementRef<HTMLButtonElement>;
-  @ViewChild('inputAgregarImagen') inputAgregarImagen!: ElementRef<HTMLInputElement>;
-  @ViewChild('previsualizacionImagenes') previsualizacionImagenes!: ElementRef<HTMLButtonElement>;
+  constructor(private sanitizer: DomSanitizer) {
 
-  constructor() {
-
+    //this.btnAgregarImagen = document.getElementById('btnAgregarImagen') as HTMLButtonElement;
+    //this.btnAgregarImagen = document.getElementById('btnAgregarImagen') as HTMLAnchorElement;
+    this.inputAgregarImagen = document.getElementById('inputAgregarImagen') as HTMLInputElement;
   }
 
-  ngOnInit() {
-    const btnAgregarImagen = this.btnAgregarImagen.nativeElement as HTMLButtonElement;
-    btnAgregarImagen.addEventListener('click', () => {
-      this.inputAgregarImagen.nativeElement.click();
-    });
-    const inputAgregarImagen = this.inputAgregarImagen.nativeElement as HTMLInputElement;
-    inputAgregarImagen.addEventListener('change', () => {
-      console.log('cambio');
-      this.mostrarPrevisualizacion(inputAgregarImagen);
-    });
-    const previsualizacionImagenes = this.previsualizacionImagenes.nativeElement as HTMLButtonElement;
-    previsualizacionImagenes.addEventListener('click', () => {
-      this.inputAgregarImagen.nativeElement.click();
-    });
+  FormularioRegistroCancha = new FormGroup({
+    nombre: new FormControl('', Validators.required),
+    direccion: new FormControl('', Validators.required),
+    descripcion: new FormControl('', Validators.required),
+    tipoCancha: new FormControl('', Validators.required),
+    gradas: new FormControl('', Validators.required),
+    horaInicio: new FormControl('', Validators.required),
+    horaFin: new FormControl('', Validators.required),
+    imagenes: new FormControl('', Validators.required)
+  });
+
+  clicker():void{
+    console.log("clicker");
+    this.inputAgregarImagen = document.getElementById('inputAgregarImagen') as HTMLInputElement;
+    this.inputAgregarImagen.click();
   }
 
+  captureFile(event : any):any{
+    console.log(event.target.files);
+    const file = event.target.files[0];
+    this.extraerBase64(file).then((imagen:any) =>{
+      console.log(imagen);
+      this.previsualization = imagen.base;
 
+      this.files.push(imagen.base);
+    })
 
-
-
-  mostrarPrevisualizacion(input: HTMLInputElement) {
-    const btnAgregarImagen = this.btnAgregarImagen.nativeElement as HTMLButtonElement;
-    if (input.files!.length === 0) {
-      btnAgregarImagen.classList.remove('fotosCargadas');
-    } else {
-      btnAgregarImagen.classList.add('fotosCargadas');
-    }
+    this.files.push(file);
   }
 
-  onBtnAgregarImagenClick() {
-    this.inputAgregarImagen.nativeElement.click();
-  }
-
-  onInputAgregarImagenChange() {
-    const previsualizacionImagenes = this.previsualizacionImagenes.nativeElement;
-    previsualizacionImagenes.innerHTML = '';
-    const files = this.inputAgregarImagen.nativeElement.files;
-    for (let i = 0; i < files!.length; i++) {
-      const file = files![i];
+  extraerBase64 = async ($event: any) => new Promise((resolve, reject) => {
+    try {
+      const unsafeImg = window.URL.createObjectURL($event);
+      const image = this.sanitizer.bypassSecurityTrustUrl(unsafeImg);
       const reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = (readerEvent: any) => {
-        const content = readerEvent.target.result;
-        const imgContainer = document.createElement('div');
-        imgContainer.classList.add('imagenContainer');
-
-        const img = document.createElement('img');
-        img.src = content;
-        imgContainer.appendChild(img);
-
-        const eliminarImagen = document.createElement('button');
-        eliminarImagen.classList.add('eliminarImagen');
-        eliminarImagen.innerHTML = 'x';
-        eliminarImagen.addEventListener('click', () => {
-          imgContainer.remove();
-          if (previsualizacionImagenes.querySelectorAll('.imagenContainer').length === 0) {
-            this.btnAgregarImagen.nativeElement.classList.remove('fotosCargadas');
-          }
+      reader.readAsDataURL($event);
+      reader.onload = () => {
+        resolve({
+          base: reader.result
         });
-        imgContainer.appendChild(eliminarImagen);
-
-        previsualizacionImagenes.appendChild(imgContainer);
       };
+      reader.onerror = error => {
+        resolve({
+          base: null
+        });
+      }
+    } catch (e) {
+      reject(e);
     }
-    this.mostrarPrevisualizacion(this.inputAgregarImagen.nativeElement);
+
+  });
+
+  submit(){
+    this.nombre = this.FormularioRegistroCancha.get('nombre')?.value;
+    this.direccion = this.FormularioRegistroCancha.get('direccion')?.value;
+    this.descripcion = this.FormularioRegistroCancha.get('descripcion')?.value;
+    this.tipoCancha = this.FormularioRegistroCancha.get('tipoCancha')?.value;
+    this.gradas = this.FormularioRegistroCancha.get('gradas')?.value;
+    this.tiempoInicio = this.FormularioRegistroCancha.get('horaInicio')?.value;
+    this.tiempoFin = this.FormularioRegistroCancha.get('horaFin')?.value;
+    this.imagenes = this.FormularioRegistroCancha.get('imagenes')?.value;
+
+    console.log(this.nombre);
+    console.log(this.FormularioRegistroCancha.get('nombre')?.value);
+    console.log(this.direccion);
+    console.log(this.FormularioRegistroCancha.get('direccion')?.value);
+    console.log(this.descripcion);
+    console.log(this.FormularioRegistroCancha.get('descripcion')?.value);
+    console.log(this.tipoCancha);
+    console.log(this.FormularioRegistroCancha.get('tipoCancha')?.value);
+    console.log(this.gradas);
+    console.log(this.FormularioRegistroCancha.get('gradas')?.value);
+    console.log(this.tiempoInicio);
+    console.log(this.FormularioRegistroCancha.get('horaInicio')?.value);
+    console.log(this.tiempoFin);
+    console.log(this.FormularioRegistroCancha.get('horaFin')?.value);
+    console.log(this.imagenes);
+
   }
 }
+
