@@ -30,40 +30,6 @@ export class HomeComponent {
       this.canchas = data;
   });
   }
-/*
-  canchas: Cancha[] = [
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 1',
-      imagen: this.cancha1
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 2',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 3',
-      imagen: this.cancha3
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 4',
-      imagen: this.cancha4
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 5',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 6',
-      imagen: this.cancha3
-    },]
-*/
-
     Integrantes:Equipo [] = [
       {
         nombre: 'Juan',
