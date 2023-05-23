@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cancha } from '../models/cancha.model';
+import { Cancha } from '../models/Cancha.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
 import { CanchasService } from '../../servicios/canchas.service';
@@ -26,7 +26,7 @@ export class HomeComponent {
   constructor(private service:CanchasService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getCanchas().subscribe(data => {
+    this.service.get("http","8080", "api/field/list").subscribe(data => {
       this.canchas = data;
   });
   }
@@ -60,8 +60,8 @@ export class HomeComponent {
     }
 
 
-    navegar(web_page : String, canchas: Cancha ):void {
-      this.router.navigate([web_page], { queryParams: { data: JSON.stringify(canchas) } });
+    navegar(web_page : String):void {
+      this.router.navigate([web_page]);
     }
 
 }

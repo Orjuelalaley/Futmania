@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { CanchasService } from '../../servicios/canchas.service';
-import { Cancha } from '../models/cancha.model';
+import { Cancha } from '../models/Cancha.model';
 
 @Component({
   selector: 'app-canchas',
@@ -29,7 +29,7 @@ export class CanchasComponent {
   }
 
   ngOnInit(): void {
-    this.service.getCanchas().subscribe(data => {
+    this.service.get("http", "8080","api/field/list").subscribe(data => {
         this.canchas = data;
     });
   }

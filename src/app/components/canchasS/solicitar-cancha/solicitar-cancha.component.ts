@@ -1,7 +1,7 @@
 import { Component , Input } from '@angular/core';
 import { FormGroup,  FormControl, Validators} from '@angular/forms';
-import { Cancha } from '../../models/cancha.model';
-import { ActivatedRoute } from '@angular/router';
+import { Cancha } from '../../models/Cancha.model';
+import { CanchasService } from '../../../servicios/canchas.service';
 
 @Component({
   selector: 'app-solicitar-cancha',
@@ -28,8 +28,8 @@ export class SolicitarCanchaComponent {
   cancha3 = './assets/images/canchas/3.jpg';
   cancha4 = './assets/images/canchas/4.jpg';
   perfil = './assets/images/canchas/prfl.png';
-
-  constructor(private route: ActivatedRoute) {}
+  canchas: Cancha[] = [];
+  constructor(private service:CanchasService) {}
   solicitudCancha = new FormGroup({
     dia: new FormControl('', Validators.required),
     horaInicio: new FormControl('', Validators.required),
@@ -37,8 +37,8 @@ export class SolicitarCanchaComponent {
   });
 
   ngOnInit(){
-    this.route.queryParams.subscribe(params => {
-      this.cancha = JSON.parse(params['data']);
+    this.service.get("http","8080", "api/field/list").subscribe(data => {
+      this.canchas = data;
     });
     this.nombre = this.cancha.nombre;
     this.direccion = this.cancha.ubicacion;
