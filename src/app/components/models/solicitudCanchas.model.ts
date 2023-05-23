@@ -6,6 +6,5 @@ export interface solicitudCancha {
   dia: string;
   horaInicio: string;
   horaFin: string;
-  imagenes: string[];
   comentario: string[];
 }

@@ -4,7 +4,5 @@ export interface registroCancha {
   descripcion: string;
   tipoCancha: string;
   gradas: string;
-  tiempoInicio: string;
-  tiempoFin: string;
   imagenes: string;
 }
