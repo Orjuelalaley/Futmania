@@ -7,5 +7,5 @@ export interface Cancha {
   precioHora: number;
   imagen: String[];
   tipoCancha: String;
-  gradas: String;
+  gradas: number;
 }
