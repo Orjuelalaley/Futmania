@@ -1,7 +1,7 @@
 import { Component, Input} from '@angular/core';
 import { Router } from '@angular/router';
 import { CanchasService } from '../../servicios/canchas.service';
-import { Cancha } from '../models/cancha.model';
+import { Cancha } from '../models/Cancha.model';
 
 @Component({
   selector: 'app-canchas',
@@ -19,40 +19,6 @@ export class CanchasComponent {
   Soccer_field = './assets/images/Soccer_field_icon.png';
 
   canchas: Cancha[] = [];
-
-  /*
-  canchas: Cancha[] = [
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 1',
-      imagen: this.cancha1
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 2',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 3',
-      imagen: this.cancha3
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 4',
-      imagen: this.cancha4
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 5',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 6',
-      imagen: this.cancha3
-    },]
-*/
   constructor(private service:CanchasService, private router:Router) { }
 
   scrollToElement(elementId: string): void {
@@ -63,7 +29,7 @@ export class CanchasComponent {
   }
 
   ngOnInit(): void {
-    this.service.getCanchas().subscribe(data => {
+    this.service.get("http", "8080","api/field/list").subscribe(data => {
         this.canchas = data;
     });
   }

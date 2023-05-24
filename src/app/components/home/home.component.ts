@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Cancha } from '../models/cancha.model';
+import { Cancha } from '../models/Cancha.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
 import { CanchasService } from '../../servicios/canchas.service';
@@ -26,44 +26,10 @@ export class HomeComponent {
   constructor(private service:CanchasService, private router: Router) { }
 
   ngOnInit(): void {
-    this.service.getCanchas().subscribe(data => {
+    this.service.get("http","8080", "api/field/list").subscribe(data => {
       this.canchas = data;
   });
   }
-/*
-  canchas: Cancha[] = [
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 1',
-      imagen: this.cancha1
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 2',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 3',
-      imagen: this.cancha3
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 4',
-      imagen: this.cancha4
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 5',
-      imagen: this.cancha2
-    },
-    {
-      descripcion: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Commodi, facilis!',
-      nombre: 'Cancha 6',
-      imagen: this.cancha3
-    },]
-*/
-
     Integrantes:Equipo [] = [
       {
         nombre: 'Juan',
@@ -94,8 +60,8 @@ export class HomeComponent {
     }
 
 
-    navegar(web_page : String, canchas: Cancha ):void {
-      this.router.navigate([web_page], { queryParams: { data: JSON.stringify(canchas) } });
+    navegar(web_page : String):void {
+      this.router.navigate([web_page]);
     }
 
 }
