@@ -27,4 +27,8 @@ export class RegistroComponent implements OnInit {
     this.router.navigate(['/home']);
   }
 
+  IniciarSesion() {
+
+
+  }
 }
