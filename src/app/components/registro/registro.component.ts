@@ -23,6 +23,8 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+
+
   navegar() {
     this.router.navigate(['/home']);
   }
