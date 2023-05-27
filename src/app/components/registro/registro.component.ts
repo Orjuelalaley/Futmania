@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from 'app/servicios/auth.service';
+import { Usuario } from 'app/components/models/Usuario.model';
 
 @Component({
   selector: 'app-registro',
@@ -8,7 +10,7 @@ import { Router } from '@angular/router';
 })
 export class RegistroComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private authService : AuthService) { }
 
   ngOnInit(): void {
     const BotonRegistro = document.getElementById('Registrate');
@@ -23,14 +25,23 @@ export class RegistroComponent implements OnInit {
     });
   }
 
+  onLogin(form: any) : void {
+    console.log('login: ', form.value);
+    this.authService.login(form.value).subscribe(res => {
+      this.router.navigateByUrl('/home');
+    });
+  }
+
+  onRegister(form: any) : void {
+    console.log('register: ', form.value);
+    this.authService.register(form.value).subscribe(res => {
+      this.router.navigateByUrl('/home');
+    });
+  }
 
 
   navegar() {
     this.router.navigate(['/home']);
   }
 
-  IniciarSesion() {
-
-
-  }
 }

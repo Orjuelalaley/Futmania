@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegistroComponent } from 'app/components/registro/registro.component';
+import { AuthService } from '../../../servicios/auth.service';
 
 
 @NgModule({
@@ -12,7 +13,8 @@ import { RegistroComponent } from 'app/components/registro/registro.component';
     CommonModule,
     FormsModule,
     HttpClientModule,
-    AuthRoutingModule
-  ]
+    AuthRoutingModule,
+  ],
+  providers: [AuthService]
 })
 export class AuthModule { }

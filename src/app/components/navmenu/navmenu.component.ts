@@ -31,7 +31,7 @@ export class NavmenuComponent implements OnInit {
       this.renderer.removeClass(header, 'header__active');
     }
   }
-  navegar(web_page : String ):void {
+  navegar(web_page : string ):void {
     this.router.navigate([web_page]);
   }
 
