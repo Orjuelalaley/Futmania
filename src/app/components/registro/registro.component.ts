@@ -28,14 +28,14 @@ export class RegistroComponent implements OnInit {
   onLogin(form: any) : void {
     console.log('login: ', form.value);
     this.authService.login(form.value).subscribe(res => {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('auth/home');
     });
   }
 
   onRegister(form: any) : void {
     console.log('register: ', form.value);
     this.authService.register(form.value).subscribe(res => {
-      this.router.navigateByUrl('/home');
+      this.router.navigateByUrl('auth/home');
     });
   }
 

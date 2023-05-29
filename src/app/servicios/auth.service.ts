@@ -4,6 +4,7 @@ import { Usuario } from '../components/models/Usuario.model';
 import { JwtResponse } from 'app/components/models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Register } from '../components/models/Register.model';
 
 
 @Injectable()
@@ -13,16 +14,14 @@ export class AuthService {
   private token: String = "";
   constructor(private httpClient: HttpClient) { }
 
-  register(user: Usuario): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/api/v1/users/register`, user).pipe(
-      tap((res:  JwtResponse ) => {
-
+  register(user: Usuario): Observable<Register> {
+    return this.httpClient.post<Register>(`${this.AUTH_SERVER}/api/v1/users/register`, user).pipe(
+      tap((res:  Register ) => {
         if (res) {
-          // guardar token
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+          console.log('Register: ', res);
         }
       })
-    );
+    )
   }
 
   login (user: Usuario): Observable<JwtResponse> {
