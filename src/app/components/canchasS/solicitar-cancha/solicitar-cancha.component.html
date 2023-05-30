@@ -6,33 +6,12 @@
           <div class="slider">
               <div class="slides">
                   <input type="radio" name="radio-btn" id="radio1" checked>
-                  <input type="radio" name="radio-btn" id="radio2">
-                  <input type="radio" name="radio-btn" id="radio3">
-                  <input type="radio" name="radio-btn" id="radio4">
                   <div class="slide first">
-                      <img src="{{cancha1}}" alt="">
-                  </div>
-                  <div class="slide">
-                      <img src="{{cancha2}}" alt="">
-                  </div>
-                  <div class="slide">
-                      <img src="{{cancha3}}" alt="">
-                  </div>
-                  <div class="slide">
-                      <img src="{{cancha4}}" alt="">
-                  </div>
-                  <div class="navigation-auto">
-                      <div class="auto-btn1"></div>
-                      <div class="auto-btn2"></div>
-                      <div class="auto-btn3"></div>
-                      <div class="auto-btn4"></div>
+                      <img src="{{imagenes}}" alt="">
                   </div>
               </div>
               <div class="navigation-manual">
                   <label for="radio1" class="manual-btn"></label>
-                  <label for="radio2" class="manual-btn"></label>
-                  <label for="radio3" class="manual-btn"></label>
-                  <label for="radio4" class="manual-btn"></label>
               </div>
           </div>
       </div>
@@ -69,38 +48,6 @@
                     </div>
                   </form>
 
-              </div>
-              <div class="contenedor-comDerecha">
-                  <div class="contenedor-comDerecha-Arr">
-                      <h3>COMENTARIOS</h3>
-                      <form [formGroup]="comentariosFrom">
-                          <main class="comentariosCanchas">
-                            <section class="contenedor-agg-Com">
-                                <div class="imgagenUser">
-                                    <img src="{{perfil}}" alt="">
-                                </div>
-                                <div class="input-com">
-                                    <input id="nuevoComentario" type="text" placeholder="Cuentanos que opinas" (click)="borrarContenido($event.target)" formControlName="comentario">
-                                    <div class="btn-agg">
-                                        <button (click)="comment()" id="btnComentario">Comentar</button>
-                                    </div>
-                                </div>
-                            </section>
-                          </main>
-                          <ul id="comentarios" class="contenedor-Comentarios2">
-                            <div *ngFor="let comentarios of comentario">
-                              <p>{{comentarios}}</p>
-                            </div>
-
-                          </ul>
-                      </form>
-
-                  </div>
-                  <div class="contenedor-comDerecha-Ab">
-                      <div class="valoracionCancha">
-                          <h3>VALORACIÓN</h3>
-                      </div>
-                  </div>
               </div>
           </div>
           <div class="contenedorConfirmacion">

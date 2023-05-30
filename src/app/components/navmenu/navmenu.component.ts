@@ -1,7 +1,7 @@
 
 import { Component,HostListener, Renderer2,OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-
+import { AuthService } from 'app/servicios/auth.service';
 
 @Component({
   selector: 'app-navmenu',
@@ -18,7 +18,7 @@ export class NavmenuComponent implements OnInit {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
-  constructor(private renderer: Renderer2,private router:Router) { }
+  constructor(private renderer: Renderer2, private router:Router, private authService: AuthService) { }
 
   @HostListener('window:scroll', ['$event'])
   onScroll(event: any) {
@@ -33,6 +33,10 @@ export class NavmenuComponent implements OnInit {
   }
   navegar(web_page : string ):void {
     this.router.navigate([web_page]);
+  }
+  LogOut():void{
+    this.authService.logout();
+    this.router.navigate(['auth/registro']);
   }
 
 }

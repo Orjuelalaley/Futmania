@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Usuario } from '../components/models/Usuario.model';
 import { JwtResponse } from 'app/components/models/jwt-response';
 import { tap } from 'rxjs/operators';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { Register } from '../components/models/Register.model';
+import { RegisterR } from '../components/models/RegisterR.model';
+import { UsuarioL } from '../components/models/UsuarioL.model';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @Injectable()
@@ -14,23 +17,18 @@ export class AuthService {
   private token: String = "";
   constructor(private httpClient: HttpClient) { }
 
-  register(user: Usuario): Observable<Register> {
-    return this.httpClient.post<Register>(`${this.AUTH_SERVER}/api/v1/users/register`, user).pipe(
-      tap((res:  Register ) => {
-        if (res) {
-          console.log('Register: ', res);
-        }
-      })
-    )
+  register(user: Usuario): Observable<RegisterR> {
+    console.log('Register: ', user);
+    return this.httpClient.post<RegisterR>(this.AUTH_SERVER + '/api/v1/users/register', user);
   }
 
-  login (user: Usuario): Observable<JwtResponse> {
-    return this.httpClient.post<JwtResponse>(`${this.AUTH_SERVER}/api/v1/users/login`, user).pipe(
-      tap(async (res:  JwtResponse ) => {
-
+  login (user: UsuarioL): Observable<JwtResponse>{
+    console.log('Login: ', user);
+    return this.httpClient.post<JwtResponse>(this.AUTH_SERVER +'/api/v1/users/login', user ).pipe(
+      tap((res: JwtResponse) => {
         if (res) {
-          // guardar token
-          this.saveToken(res.dataUser.accessToken, res.dataUser.expiresIn);
+          this.saveToken(res.accessToken);
+          console.log('token: ', this.token);
         }
       })
     );
@@ -39,19 +37,18 @@ export class AuthService {
 
   logout(): void {
     this.token = "";
-    localStorage.removeItem("ACCESS_TOKEN");
+    localStorage.removeItem('token');
     localStorage.removeItem("EXPIRES_IN");
   }
 
-  private saveToken(token: string, expiresIn: string): void {
-    localStorage.setItem("ACCESS_TOKEN", token);
-    localStorage.setItem("EXPIRES_IN", expiresIn);
+  private saveToken(token: string): void {
+    localStorage.setItem('token', token);
     this.token = token;
   }
 
-  private getToken(): String {
+  getToken(): String {
     if (!this.token) {
-      this.token = localStorage.getItem("ACCESS_TOKEN")!;
+      this.token = localStorage.getItem('token')!;
     }
     return this.token;
   }

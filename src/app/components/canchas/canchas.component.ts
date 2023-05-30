@@ -29,13 +29,17 @@ export class CanchasComponent {
   }
 
   ngOnInit(): void {
-    this.service.get("http", "8080","api/field/list").subscribe(data => {
+    this.service.get("http", "8080","api/v1/field/list").subscribe(data => {
         this.canchas = data;
     });
   }
 
-  navegar(web_page : String ):void {
+  navegarRegistro( web_page : String):void {
     this.router.navigate([web_page]);
+  }
+
+  navegar(web_page : String , cancha: Cancha):void {
+    this.router.navigate([web_page, cancha.id]);
   }
 
 }

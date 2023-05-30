@@ -4,7 +4,7 @@
       <div class="cover">
         <div class="text">
           <h1>Te ayudamos a encontrar tu cancha favorita</h1>
-          <input (click)="navegar('auth/registroCancha')" type="button" value="Registra tu cancha">
+          <input (click)="navegarRegistro('auth/registroCancha')" type="button" value="Registra tu cancha">
         </div>
         <div class="svg">
           <img src="{{Soccer_field}}" alt="">
@@ -17,11 +17,11 @@
             <h1>CANCHAS</h1>
         </div>
         <div class="contenedor-canchas">
-            <ul (click)="navegar('auth/solicitudCancha')" class="contenedor-lista-canchas">
-                <li *ngFor="let cancha of canchas" role="listitem" class="card-cancha">
+            <ul  class="contenedor-lista-canchas">
+                <li *ngFor="let cancha of canchas" role="listitem" class="card-cancha" (click)="navegar('auth/solicitudCancha', cancha)">
                     <div class="cancha-card-wrapper">
                         <a class="link-cancha-card"></a>
-                        <img src="{{cancha.imagen}}" alt="">
+                        <img src="{{cancha.imagenCancha}}" alt="">
                         <div class="canchas-card-details">
                             <h2>{{cancha.nombre}}</h2>
                             <p>{{cancha.descripcion}}</p>

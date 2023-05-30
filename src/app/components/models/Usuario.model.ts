@@ -1,10 +1,7 @@
-import { Reserva } from './Reserva.model';
-
 export interface Usuario {
-  id: number;
-  nombre: String;
-  email: String;
+  name: String;
   telefono: String;
+  identification: String;
+  email: String;
   password: String;
-  reservas: Reserva[];
 }

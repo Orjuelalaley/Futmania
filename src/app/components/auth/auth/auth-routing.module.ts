@@ -4,7 +4,6 @@ import { CanchasComponent } from '../../canchas/canchas.component';
 import { HomeComponent } from '../../home/home.component';
 import { PageNotFoundComponent } from '../../page-not-found/page-not-found.component';
 import { RegistroComponent } from '../../registro/registro.component';
-import { DocumentacionComponent } from '../../documentacion/documentacion.component';
 import { RegistrarCanchaComponent } from '../../canchaR/registrar-cancha/registrar-cancha.component';
 import { SolicitarCanchaComponent } from '../../canchasS/solicitar-cancha/solicitar-cancha.component';
 
@@ -15,7 +14,7 @@ const routes: Routes = [
   { path: 'canchas', component: CanchasComponent},
   { path: 'home', loadChildren: () => import('../../../components/components.module').then(m => m.ComponentsModule)},
   { path: 'not-found', component: PageNotFoundComponent},
-  { path: 'documentacion', component: DocumentacionComponent},
+  { path: 'solicitudCancha/:id', component: SolicitarCanchaComponent },
   { path: 'registroCancha', component: RegistrarCanchaComponent},
   { path: 'solicitudCancha', component: SolicitarCanchaComponent},
   { path: '**', redirectTo: '/not-found'},

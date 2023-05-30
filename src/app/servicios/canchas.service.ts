@@ -13,10 +13,7 @@ export class CanchasService {
   }
 
   apiUrl = environment.API_URL_;
-  login(type : string, port: string, body : any, email : string, password : string){
-    return this.http.post(type + "://" + this.apiUrl + ":" + port + "/" + body,
-      {email, password})
-  }
+
 
   //                                   http://localhost:8080/api/field/list
 
@@ -24,5 +21,12 @@ export class CanchasService {
 
   get(type : string, port: string, body : any){
     return this.http.get<Cancha[]>(type + "://" + this.apiUrl + ":" + port + "/" + body);
+  }
+  getById(type : string, port: string, body : any, id : number){
+    return this.http.get<Cancha>(type + "://" + this.apiUrl + ":" + port + "/" + body + "/" + id);
+  }
+
+  getToken(): String{
+    return localStorage.getItem('token')!;
   }
 }

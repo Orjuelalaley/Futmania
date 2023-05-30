@@ -1,10 +1,9 @@
 export interface JwtResponse {
-  dataUser: {
     id: number;
     username: string;
     email: string;
-    roles: string;
+    roles: string [];
+    tokenType: string;
     accessToken: string;
-    expiresIn: string;
-  }
+    status: string;
 }

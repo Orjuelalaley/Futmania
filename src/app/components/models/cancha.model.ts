@@ -4,8 +4,8 @@ export interface Cancha {
   nombre: String;
   descripcion: String;
   ubicacion: String;
-  precioHora: number;
-  imagen: String[];
+  precioHora: String;
+  imagenCancha: String;
   tipoCancha: String;
   gradas: number;
 }

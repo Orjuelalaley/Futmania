@@ -9,8 +9,8 @@
                     <a href="" class="redSocial"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>o utiliza tu cuenta</span>
-                <input type="text" name= "email" placeholder="Email" ngModel required>
-                <input type="password" name="password" placeholder="Password" ngModel required>
+                <input type="text" name= "email" placeholder="Email" [(ngModel)]="usuarioL.email" ngModel required>
+                <input type="password" name="password" placeholder="Password" [(ngModel)]="usuarioL.password" ngModel required>
                 <a href="#">Olvidaste tu contraseña?</a>
                 <button type="submit" value="Send">Inicia Sesión</button>
             </form>
@@ -24,11 +24,11 @@
                     <a href="" class="redSocial"><i class="fab fa-linkedin-in"></i></a>
                 </div>
                 <span>o utiliza tu correo para registrate</span>
-                <input type="text" name="name" placeholder="Nombre" ngModel required>
-                <input type="text" name="telefono" placeholder="Telefono" ngModel required>
-                <input type="text" name="identificacion" placeholder="Identificacion" ngModel required>
-                <input type="text" name="email" placeholder="Correo" ngModel required>
-                <input type="password" name="password" placeholder="Contraseña" ngModel required>
+                <input type="text" name="name" placeholder="Nombre" [(ngModel)]="usuario.name" ngModel required>
+                <input type="text" name="telefono" placeholder="Telefono" [(ngModel)]="usuario.telefono" ngModel required>
+                <input type="text" name="identification" placeholder="Identificacion" [(ngModel)]="usuario.identification" ngModel required>
+                <input type="text" name="email" placeholder="Correo" [(ngModel)]="usuario.email" ngModel required>
+                <input type="password" name="password" placeholder="Contraseña" [(ngModel)]="usuario.password" ngModel required>
                 <button type="submit">Registrarse</button>
             </form>
         </div>
