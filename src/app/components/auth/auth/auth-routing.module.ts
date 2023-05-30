@@ -9,16 +9,14 @@ import { SolicitarCanchaComponent } from '../../canchasS/solicitar-cancha/solici
 
 const routes: Routes = [
   { path: 'registro', component: RegistroComponent },
-
   { path: 'home', component: HomeComponent},
+  { path: 'auth/home', component: HomeComponent},
   { path: 'canchas', component: CanchasComponent},
   { path: 'home', loadChildren: () => import('../../../components/components.module').then(m => m.ComponentsModule)},
-  { path: 'not-found', component: PageNotFoundComponent},
   { path: 'solicitudCancha/:id', component: SolicitarCanchaComponent },
   { path: 'registroCancha', component: RegistrarCanchaComponent},
   { path: 'solicitudCancha', component: SolicitarCanchaComponent},
-  { path: '**', redirectTo: '/not-found'},
-  { path: 'not-found', redirectTo: '/not-found'}
+  { path: 'auth/**', component: PageNotFoundComponent},
 ];
 
 @NgModule({

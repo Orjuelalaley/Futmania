@@ -15,7 +15,7 @@ export class AuthService {
   AUTH_SERVER: string = 'http://localhost:8080';
   authSubject  =  new  BehaviorSubject(false);
   private token: String = "";
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private cookieService: CookieService) { }
 
   register(user: Usuario): Observable<RegisterR> {
     console.log('Register: ', user);
@@ -38,7 +38,7 @@ export class AuthService {
   logout(): void {
     this.token = "";
     localStorage.removeItem('token');
-    localStorage.removeItem("EXPIRES_IN");
+    this.cookieService.delete('token');
   }
 
   private saveToken(token: string): void {
