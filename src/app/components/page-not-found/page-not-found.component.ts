@@ -1,5 +1,6 @@
 import { Component,OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router } from '@angular/router'
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-page-not-found',
@@ -8,10 +9,14 @@ import { Router } from '@angular/router';
 })
 
 export class PageNotFoundComponent implements OnInit {
-  constructor(private router:Router) { }
+  constructor(private router:Router, private cookieService:CookieService) { }
   ngOnInit(): void {
   }
   navegar(web_page : String ):void {
-    this.router.navigate([web_page]);
+    if(this.cookieService.get('token') == null){
+      this.router.navigate(['/auth/registro']);
+    }else{
+      this.router.navigate([web_page]);
+    }
   }
 }

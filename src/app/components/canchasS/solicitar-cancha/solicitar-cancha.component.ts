@@ -2,6 +2,7 @@ import { Component , Input } from '@angular/core';
 import { FormGroup,  FormControl, Validators} from '@angular/forms';
 import { Cancha } from '../../models/Cancha.model';
 import { CanchasService } from '../../../servicios/canchas.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-solicitar-cancha',
@@ -10,26 +11,32 @@ import { CanchasService } from '../../../servicios/canchas.service';
 })
 export class SolicitarCanchaComponent {
 
-  cancha!: Cancha;
+  @Input() id: any = '';
   @Input() nombre: any = '';
   @Input() direccion: any = '';
   @Input() tipoCancha: any = '';
   @Input() gradas: any = '';
   @Input() descripcion: any = '';
-  @Input() imagenes: any[] = [];
+  @Input() imagenes: any = '';
 
   @Input() dia: any = '';
   @Input() horaInicio: any = '';
   @Input() horaFin: any = '';
-  @Input() comentario: any[] = [];
 
-  cancha1 = './assets/images/canchas/1.jpg';
-  cancha2 = './assets/images/canchas/2.jpg';
-  cancha3 = './assets/images/canchas/3.jpg';
-  cancha4 = './assets/images/canchas/4.jpg';
-  perfil = './assets/images/canchas/prfl.png';
-  canchas: Cancha[] = [];
-  constructor(private service:CanchasService) {}
+
+  cancha: Cancha = {
+    id: 0,
+    nombre: '',
+    descripcion: '',
+    ubicacion: '',
+    precioHora: '',
+    imagenCancha: '',
+    tipoCancha: '',
+    gradas: 0,
+  };
+
+
+  constructor(private service:CanchasService, private route: ActivatedRoute) {}
   solicitudCancha = new FormGroup({
     dia: new FormControl('', Validators.required),
     horaInicio: new FormControl('', Validators.required),
@@ -37,22 +44,29 @@ export class SolicitarCanchaComponent {
   });
 
   ngOnInit(){
-    this.service.get("http","8080", "api/field/list").subscribe(data => {
-      this.canchas = data;
+    this.ScrollTop();
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.service.getById("http","8080", "api/v1/field", this.id).subscribe(data => {
+      console.log(data);
+      this.cancha = data;
+      this.nombre = this.cancha.nombre;
+      this.direccion = this.cancha.ubicacion;
+      this.descripcion = this.cancha.descripcion;
+      this.tipoCancha = this.cancha.tipoCancha;
+      this.imagenes = this.cancha.imagenCancha;
+      console.log(this.cancha.imagenCancha);
+      if(this.cancha.gradas == 1){
+        this.gradas = "Con Gradas";
+      }else{
+        this.gradas = "Sin Gradas";
+      }
+      console.log(this.cancha.ubicacion);
     });
-    this.nombre = this.cancha.nombre;
-    this.direccion = this.cancha.ubicacion;
-    this.descripcion = this.cancha.descripcion;
-    console.log(this.cancha.ubicacion);
   }
 
   comentariosFrom = new FormGroup({
     comentario: new FormControl('', Validators.required),
   });
-
-  comment(){
-    this.comentario.push(this.comentariosFrom.get('comentario')?.value);
-  }
 
   Submit(){
     this.dia = this.solicitudCancha.get('dia')?.value;
@@ -62,12 +76,11 @@ export class SolicitarCanchaComponent {
     console.log(this.dia);
     console.log(this.horaInicio);
     console.log(this.horaFin);
-    console.log(this.comentario[0]);
     console.log(this.cancha.nombre);
   }
 
-  borrarContenido(input: any) {
-    input.value = '';
+  ScrollTop(){
+    window.scrollTo(0,0);
   }
 }
 

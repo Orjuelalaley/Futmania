@@ -3,6 +3,7 @@ import { Cancha } from '../models/Cancha.model';
 import { Equipo } from './equipo.model';
 import { Router } from '@angular/router';
 import { CanchasService } from '../../servicios/canchas.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-home',
@@ -17,18 +18,17 @@ export class HomeComponent {
   imagen_sebas = './assets/images/equipo/sebastian.jpeg';
   imagen_carlos = './assets/images/equipo/uwu.jpeg';
 
-  cancha1 = './assets/images/canchas/1.jpg';
-  cancha2 = './assets/images/canchas/2.jpg';
-  cancha3 = './assets/images/canchas/3.jpg';
-  cancha4 = './assets/images/canchas/4.jpg';
-
   canchas: Cancha[] = [];
-  constructor(private service:CanchasService, private router: Router) { }
+  constructor(private service:CanchasService, private router: Router, private cookieService: CookieService) { }
 
   ngOnInit(): void {
-    this.service.get("http","8080", "api/field/list").subscribe(data => {
+    this.ScrollTop();
+    this.service.get("http","8080", "api/v1/field/list").subscribe(data => {
       this.canchas = data;
-  });
+    });
+    if(this.cookieService.check('token') == false){
+      this.router.navigate(['/auth/registro']);
+    }
   }
     Integrantes:Equipo [] = [
       {
@@ -55,13 +55,15 @@ export class HomeComponent {
         descripcion: 'Lider Desarrollo',
         especialidad: 'SpringBoot · Java · HTML · CSS',
       }]
+
     ScrollTop(){
       window.scrollTo(0,0);
     }
 
 
-    navegar(web_page : String):void {
-      this.router.navigate([web_page]);
+    navegar(web_page : String, cancha: Cancha):void {
+      console.log(cancha.id);
+      this.router.navigate([web_page, cancha.id]);
     }
 
 }
