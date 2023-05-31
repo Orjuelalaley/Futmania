@@ -52,6 +52,9 @@ export class RegistroComponent implements OnInit {
           this.cookieService.set('token', res.accessToken);
           this.router.navigateByUrl('auth/home');
         }
+        if(this.usuarioL.email == ""){
+          alert("Ingrese un correo");
+        }
     });
   }
 
