@@ -1,4 +1,4 @@
-# Proyecto de Página Full Stack para Arrendar Canchas de Fútbol
+# Futmania ⚽⚽
 
 Este proyecto es una página web Full Stack diseñada para facilitar el arrendamiento de canchas de fútbol. La aplicación fue creada utilizando Angular para el frontend y Spring Boot para el backend.
 
